@@ -54,10 +54,54 @@ public class ProblemLoop {
      }
 
     static int readNumber(){
+        System.out.println("Please Enter a Number:");
          int number = ConsoleInput().nextInt();
          return  number;
      }
     public static void main(String[] args) {
+
+
+        boolean flag=true;
+        while(flag){
+
+            System.out.println("Choose the one of the operation from below menu:");
+            System.out.println("1-->given number is a palindrome or not ");
+            System.out.println("2-->sumOfDigits");
+            System.out.println("3-->reverse number");
+            System.out.println("4-->factorail of a number");
+            System.out.println("5-->arm strong number");
+            System.out.println("6-->perfect number");
+            System.out.println("7-->prime number");
+            System.out.println("8-->fibonachi series");
+            System.out.println("9->find previous primenumber ");
+            System.out.println("10--->draw shape");
+            System.out.println("0-->to exit");
+
+            int number=readNumber();
+            if(number==1){
+                palindrome();
+            }else if(number==2){
+                sumOfDigit();
+            }else if(number==3){
+                reverseNumber();
+            }else if(number==4){
+                factorialOfNumber();
+            }else if(number==5){
+                armStrongNumber();
+            }else if(number==6){
+                perfectNumber();
+            }else if(number==7){
+                primeNumber();
+            }else if(number==8){
+                fibonacci();
+            }else if(number==9){
+                findPrevPrime();
+            }else if(number==10){
+                drawShapes();
+            }else if(number==0){
+                flag =false;
+            }
+        }
 
          //palindrome();
          //sumOfDigit();
@@ -66,7 +110,9 @@ public class ProblemLoop {
          //armStrongNumber();
          //perfectNumber();
            //primeNumber();
-        fibonacci();
+        //fibonacci();
+        //findPrevPrime();
+        //drawShapes();
 
 
 
@@ -249,4 +295,103 @@ public class ProblemLoop {
     }
 
 
-}
+    static void findPrevPrime(){
+
+        // 11 -->
+        // 3 5 7 11 13 -
+        // 1 2 3 4 56 7 8 9 10 11 12 13 14 15 16 18 19 20
+        // 15
+
+        int number = readNumber();
+        boolean prime=true;
+        while(number>2) {
+            // if the number is even  decrement the number by one .
+            if (number % 2 == 0) {
+                number--;
+            }
+            for (int j = 2; j <=number/2 ; j++) {
+                if((number % j) == 0){
+                    prime=false;
+                }
+            }
+            // if we find the number is not a prime number to check the next number set the flag to true and decrement the number
+            if(!prime){
+                prime=true;
+                number--;
+            }
+            else
+                break;  //if the number is not divsible by any break it.
+        }
+        if(prime){
+            System.out.println(number);
+        }
+    }
+
+    static void drawShapes() {
+        int number = readNumber();
+
+
+        for (int i = 0; i < number; i++) {
+            for (int j = 0; j < number - i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+        // ****  i=0   j: 0-->3
+        //  ***  i=1   j: 1-->3
+        //   **  i=2   j: 2--3
+        //    *  i=3   j->3
+        System.out.println();
+        for (int i = 0; i < number; i++) {
+            for (int j = 0; j < number; j++) {
+                if (j > i - 1) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+         /* XX*XX   i=0 j 0--4 j -->0 --x 1 --x 2 * 3 X 4 X
+            X***X   i=1 j 0--4   0 -x 1 -* 2-* 3-* 4-X
+            *****
+ X***X   i=3
+            XX*XX
+*/
+        for (int i = 0; i < number; i++) {
+            if (i <= number / 2) {
+                int start = (number / 2) - i;
+                int end = (number / 2) + i;
+                for (int j = 0; j < number; j++) {
+                    if (j == start && start <= end) {
+                        System.out.print("*");
+                        start++;
+                    } else {
+                        System.out.print("X");
+                    }
+                }
+                System.out.println();
+            } else {
+                int start = i - (number / 2);
+                int end = number - (start + 1);
+                for (int j = 0; j < number; j++) {
+                    if (j == start && start <= end) {
+                        System.out.print("*");
+                        start++;
+                    } else {
+                        System.out.print("X");
+                    }
+                }
+                System.out.println();
+
+            }
+
+        }
+    }
+
+
+
+    }
+
+
+
