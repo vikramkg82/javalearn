@@ -52,7 +52,7 @@ public class SumBelowAndAboveDiagonal {
             }
 
         }
-        return (sum / totalEle);
+        return (sum * 1.0 / totalEle);
     }
 
 
@@ -60,22 +60,26 @@ public class SumBelowAndAboveDiagonal {
     public static void elementAboveTheAverage() {
         double average = averageOfTheArray();
         boolean found = false;
+        int count = 0;
         System.out.print('[');
         for (int i = 0; i < arra2d.length; i++) {
             for (int j = 0; j < arra2d.length; j++) {
                 if ((arra2d[i][j] > average)) {
+
+                    count++;
+
+                    if (count > 1) {
+                        System.out.print(",");
+                    }
                     System.out.print(arra2d[i][j]);
-                    found = true;
-                }
-                if (j != arra2d.length && found == true) {
-                    System.out.print(",");
-                    found = false;
+
+
                 }
             }
+
         }
         System.out.print("]");
     }
-
 
     public static int sumBelowLeftDiagonal() {
         int sum = 0;
@@ -107,11 +111,7 @@ public class SumBelowAndAboveDiagonal {
 
     public  static boolean checkArrayIsSquare() {
 
-        if (((arra2d.length + arra2d[0].length) / 2) == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return ((arra2d.length + arra2d[0].length) / 2) == 0;
 
     }
 
