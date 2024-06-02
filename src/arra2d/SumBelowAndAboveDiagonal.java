@@ -2,70 +2,74 @@ package arra2d;
 
 public class SumBelowAndAboveDiagonal {
 
-    public static int[][] arra2d ={{99,2,3},{3,99,5},{6,7,99}};
-    //   0    1   2
-    // 0 99   2   3
-    // 1  3    99  5   i =0 j=1 j=2 ; i=1  j=2 ; i=2
-    // 2  6    7   99
+    public static int[][] arra2d = {{99, 1, 1}, {1, 99, 1}, {1, 1, 99}};
+    //     0    1     2
+    //---------------
+    // 0 | 99     1    1
+    // 1 |  1    99    1   i =0 j=1 j=2 ; i=1  j=2 ; i=2
+    // 2 |  1     1   99
     //
 
-    public static int sum=0;
+
+
+
     public static void main(String[] args) {
 
-        if(checkArrayIsNotEmpty()) {
-            System.out.println("Sum of the element above the diagonal :" + sumAboveDiagonal());
-            System.out.println("Sum of the element below the diagonal :" + sumBelowDiagonal());
+        if (checkArrayIsNotEmpty()) {
+            System.out.println("Sum of the element above the left diagonal :" + sumAboveLeftDiagonal());
+            System.out.println("Sum of the element below the left diagonal :" + sumBelowLeftDiagonal());
+
+            System.out.println("Sum of the element above the Right Diagonal:" + sumAboveTheRightDiagonal());
+            System.out.println("Sum of the element below the Right Diagonal:" + sumBelowTheRightDiagonal());
             System.out.println("Average of the Array:" + averageOfTheArray());
             //System.out.println("Element of the Array > average are :" + elementAboveTheAverage());  // this one does not work not sure what's wrong here
-
-            System.out.println("Element of the Array > average are ");
+            System.out.print("Element of the Array > average are :");
             elementAboveTheAverage();
-        }
-        else
-        {
+        } else {
             System.out.println("Array is Empty");
         }
 
     }
 
 
-     public  static boolean checkArrayIsNotEmpty(){
-        if(arra2d.length>0){
+    public static boolean checkArrayIsNotEmpty() {
+        if (arra2d.length > 0) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
-     }
+    }
 
-    public static double averageOfTheArray(){
-        int  sum=0;
-        int totalEle=0;
+
+    public static double averageOfTheArray() {
+        int sum = 0;
+        int totalEle = 0;
         for (int i = 0; i < arra2d.length; i++) {
             for (int j = 0; j < arra2d.length; j++) {
 
-                sum+=arra2d[i][j];
+                sum += arra2d[i][j];
                 totalEle++;
             }
 
         }
-         return (sum/totalEle);
+        return (sum / totalEle);
     }
 
-    public  static void elementAboveTheAverage(){
-         double average= averageOfTheArray();
-         boolean found =false;
+
+
+    public static void elementAboveTheAverage() {
+        double average = averageOfTheArray();
+        boolean found = false;
         System.out.print('[');
         for (int i = 0; i < arra2d.length; i++) {
             for (int j = 0; j < arra2d.length; j++) {
-                if( (arra2d[i][j] > average)){
+                if ((arra2d[i][j] > average)) {
                     System.out.print(arra2d[i][j]);
-                    found=true;
+                    found = true;
                 }
-                if(j!=arra2d.length && found==true){
+                if (j != arra2d.length && found == true) {
                     System.out.print(",");
-                    found=false;
+                    found = false;
                 }
             }
         }
@@ -73,14 +77,12 @@ public class SumBelowAndAboveDiagonal {
     }
 
 
-
-    public static int sumBelowDiagonal(){
-        int sum=0;
-        for(int i=0 ; i< arra2d.length;i++)
-        {
+    public static int sumBelowLeftDiagonal() {
+        int sum = 0;
+        for (int i = 0; i < arra2d.length; i++) {
             for (int j = 0; j < i; j++) {
 
-                sum+=arra2d[i][j];
+                sum += arra2d[i][j];
 
             }
         }
@@ -89,20 +91,62 @@ public class SumBelowAndAboveDiagonal {
     }
 
 
-    public static int sumAboveDiagonal(){
+    public static int sumAboveLeftDiagonal() {
 
+        int sum = 0;
+        for (int i = 0; i < arra2d.length; i++) {
+            for (int j = i + 1; j < arra2d.length; j++) {
+
+                sum += arra2d[i][j];
+
+            }
+
+        }
+        return sum;
+    }
+
+    public  static boolean checkArrayIsSquare() {
+
+        if (((arra2d.length + arra2d[0].length) / 2) == 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+
+    public static  int sumAboveTheRightDiagonal(){
         int sum=0;
         for (int i = 0; i < arra2d.length; i++) {
-            for (int j = i+1; j < arra2d.length ; j++) {
+            for (int j = 0; j < arra2d.length-1-i; j++) {
+                sum+=arra2d[i][j];
+            }
+
+        }
+
+
+        return sum;
+    }
+
+
+
+    public static int sumBelowTheRightDiagonal(){
+        int sum=0;
+
+        for (int i = 1; i <arra2d.length; i++) {
+            for (int j = arra2d.length-i; j<arra2d.length; j++) {
 
                 sum+=arra2d[i][j];
 
             }
-
         }
+
+
         return sum;
 
     }
-
-
 }
+
+
+
