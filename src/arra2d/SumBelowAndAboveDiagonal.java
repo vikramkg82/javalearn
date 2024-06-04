@@ -31,7 +31,7 @@ public class SumBelowAndAboveDiagonal {
 
     }
 
-
+ // check given array is not empty
     public static boolean checkArrayIsNotEmpty() {
         if (arra2d.length > 0) {
             return true;
@@ -40,7 +40,7 @@ public class SumBelowAndAboveDiagonal {
         }
     }
 
-
+// get the averge of the array element
     public static double averageOfTheArray() {
         int sum = 0;
         int totalEle = 0;
@@ -56,7 +56,7 @@ public class SumBelowAndAboveDiagonal {
     }
 
 
-
+//search for element above the average
     public static void elementAboveTheAverage() {
         double average = averageOfTheArray();
         boolean found = false;
