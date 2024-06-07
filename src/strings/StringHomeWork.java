@@ -106,8 +106,8 @@ public class StringHomeWork {
 
       public static void anagram(){
 
-        String str1="belowr";
-        String str2="elbowo";
+        String str1="belowb";
+        String str2="elbobb";
 
         char [] char1=str1.toCharArray();
         char [] char2=str2.toCharArray();
@@ -122,7 +122,7 @@ public class StringHomeWork {
 
                   if (char1[i] == char2[j]) {
                       count = count + 1;
-                      char1[j] = ' ';
+                      char1[i] = ' ';
                       break;
                   }
 
@@ -145,7 +145,6 @@ public class StringHomeWork {
         System.out.println("Entered String is palindrome ?:" + palindrome());
         System.out.println("reverse a string:");
         reverseString();
-
         numberOfUpperCaseLetter();
         mostCommonLetter();
         anagram();
