@@ -122,7 +122,7 @@ public class StringHomeWork {
 
                   if (char1[i] == char2[j]) {
                       count = count + 1;
-                      char1[i] = ' ';
+                      char2[j] = ' ';
                       break;
                   }
 
