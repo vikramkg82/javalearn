@@ -61,9 +61,9 @@ public class StringHomeWork {
       }
 
 
-      public static void reverseWords(){
+      public static void reverseWords(String str1){
 
-        String str1 = "today is good day";
+
         String []str2 = str1.split(" ");
           for (int i = str2.length-1 ;i >= 0 ; i--) {
 
@@ -253,14 +253,15 @@ public static String compressString(String str1)
         anagram();*/
 
         // reverse the word
-        reverseWords();
+        String str1 = "today is good day";
+        reverseWords(str1);
 
         //find the most common prefix
-        String[] str1 = {"apple", "application", "app" ,"ap"};
-        System.out.println("\nLongest common prefix of the given string "+ longestCommonPrefix(str1));
+        String[] str2 = {"apple", "application", "app" ,"app","app"};
+        System.out.println("\nLongest common prefix of the given string: "+ longestCommonPrefix(str2));
 
         //compress a string
-        String str2 ="aaabbcc";
-        System.out.println("Compressed String :" + compressString(str2));
+        String str3 ="aaabbcc";
+        System.out.println("Compressed String :" + compressString(str3));
     }
 }
