@@ -61,6 +61,18 @@ public class StringHomeWork {
       }
 
 
+      public static void reverseWords(){
+
+        String str1 = "today is good day";
+        String []str2 = str1.split(" ");
+          for (int i = str2.length-1 ;i >= 0 ; i--) {
+
+               System.out.print(str2[i] + " ");
+
+          }
+      }
+
+
       public static void numberOfUpperCaseLetter(){
           char[] charArray = test.toCharArray();
           int count=0;
@@ -139,14 +151,116 @@ public class StringHomeWork {
           }
 
 
+ public static String longestCommonPrefix(String []str1) {
+
+    String prefixString=" ";
+
+   // if array is empty return
+    if(str1.length<1)
+    {
+       return prefixString;
+    }
+
+    //check all element start with the same letter
+     for (int i = 0; i < str1.length - 1; i++)
+     {
+         if (str1[i].charAt(0) != str1[i + 1].charAt(0))
+         {
+             return prefixString;
+         }
+     }
+
+     //find the string with the smallest length  and save the string and  its index
+     // maximum possible prefix string is the smallest string in the array
+     int smallestStringLength = str1[0].length();
+     String smallestString = " ";
+     int smallestStringIndex = 0;
+     for (int i = 1; i < str1.length; i++) {
+
+         if (str1[i].length() < smallestStringLength) {
+             smallestStringLength = str1[i].length();
+             smallestString = str1[i];
+             smallestStringIndex = i;
+         }
+
+     }
+     //take one element from the string array  and compare letter by letter with the smallest string .
+     int total = 0;
+     for (int i = 0; i < str1.length; i++)   //get one element from the array
+     {
+         int counterPrefix = 0;
+         for (int j = 1; j <= smallestStringLength; j++)  //compare all the letter in the  smallest string with the string array element;
+         {
+             if (smallestString.substring(0, j).equals(str1[i].substring(0, j)) && i != smallestStringIndex)
+             {
+                 counterPrefix++;
+                 if (counterPrefix > total)
+                 {
+                     total = counterPrefix;
+                     prefixString = smallestString.substring(0, j);
+                 }
+             }
+         }
+     }
+     return prefixString;
+ }
+
+public static String compressString(String str1)
+{
+    String str2=" ";
+    int count=1;
+    for (int i = 0; i < str1.length()-1; i++)
+    {
+        if(str1.charAt(i) == str1.charAt(i+1))
+        {
+            count++;
+        }
+        else{
+            if(count >1 )
+            {
+            str2 = str2 + str1.charAt(i) + count;
+            }
+            else
+            {
+                str2 = str2 + str1.charAt(i);
+            }
+            count=1;
+        }
+        if(i== (str1.length()-2))
+        {
+            if(count >1 )
+            {
+                str2 = str2 + str1.charAt(i) + count;
+            }
+            else
+            {
+                str2 = str2 + str1.charAt(i+1);
+            }
+        }
+    }
+    return str2;
+}
+
+
 
 
     public static void main(String[] args) {
-        System.out.println("Entered String is palindrome ?:" + palindrome());
+       /* System.out.println("Entered String is palindrome ?:" + palindrome());
         System.out.println("reverse a string:");
         reverseString();
         numberOfUpperCaseLetter();
         mostCommonLetter();
-        anagram();
+        anagram();*/
+
+        // reverse the word
+        reverseWords();
+
+        //find the most common prefix
+        String[] str1 = {"apple", "application", "app" ,"ap"};
+        System.out.println("\nLongest common prefix of the given string "+ longestCommonPrefix(str1));
+
+        //compress a string
+        String str2 ="aaabbcc";
+        System.out.println("Compressed String :" + compressString(str2));
     }
 }
