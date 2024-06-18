@@ -191,15 +191,15 @@ public class StringHomeWork {
          int counterPrefix = 0;
          for (int j = 1; j <= smallestStringLength; j++)  //compare all the letter in the  smallest string with the string array element;
          {
-             if (smallestString.substring(0, j).equals(str1[i].substring(0, j)) && i != smallestStringIndex)
+             if (smallestString.substring(0, j).equals(str1[i].substring(0, j)) && i != smallestStringIndex )
              {
                  counterPrefix++;
-                 if (counterPrefix > total)
-                 {
-                     total = counterPrefix;
-                     prefixString = smallestString.substring(0, j);
-                 }
+
              }
+         }
+         if( (i == 0 || total > counterPrefix) && i!=smallestStringIndex ){
+             prefixString = smallestString.substring(0, counterPrefix);
+             total=counterPrefix;
          }
      }
      return prefixString;
@@ -257,11 +257,11 @@ public static String compressString(String str1)
         reverseWords(str1);
 
         //find the most common prefix
-        String[] str2 = {"apple", "application", "app" ,"app","app"};
+        String[] str2 = {"apple", "application", "app" ,"apx","app"};
         System.out.println("\nLongest common prefix of the given string: "+ longestCommonPrefix(str2));
 
         //compress a string
-        String str3 ="aaabbcc";
+        String str3 ="daaabbceccm";
         System.out.println("Compressed String :" + compressString(str3));
     }
 }
