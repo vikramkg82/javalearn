@@ -151,40 +151,38 @@ public class StringHomeWork {
           }
 
 
- public static String longestCommonPrefix(String []str1) {
+ public static String longestCommonPrefix(String []inputString) {
      String prefixString=" ";
 
    // if array is empty return
-    if(str1.length<1)
+    if(inputString.length<1)
     {
        return prefixString;
     }
 
-      //find the string with the smallest length  and save the string and  its index
+     //find the string with the smallest length  and save the string and  its index
      // maximum possible prefix string is the smallest string in the array
-     int smallestStringLength = str1[0].length();
-
+     int smallestStringLength = inputString[0].length();
      int smallestStringIndex = 0;
-     String  smallestString=str1[0];
+     String  smallestString=inputString[0];
 
-     for (int i = 1; i < str1.length; i++) {
+     for (int i = 1; i < inputString.length; i++) {
 
-         if (str1[i].length() < smallestStringLength) {
-             smallestStringLength = str1[i].length();
-             smallestString = str1[i];
+         if (inputString[i].length() < smallestStringLength) {
+             smallestStringLength = inputString[i].length();
+             smallestString = inputString[i];
              smallestStringIndex = i;
          }
-
      }
      //take one element from the string array  and compare letter by letter with the smallest string .
      int total = Integer.MAX_VALUE;
-     for (int i = 0; i < str1.length; i++)   //get one element from the array
+     for (int i = 0; i < inputString.length; i++)   //get one element from the array
      {
          int counterPrefix = 0;
-         for (int j = 1; j <= smallestStringLength; j++)  //compare all the letter in the  smallest string with the string array element;
+         for (int j = 1; j <= smallestStringLength; j++)  //compare all the letter in the  smallest string with the string array element;start index with 1 we are using substring substring(0,0) gives nothing.
          {
 
-             if (((smallestString.substring(0,j)).equals( (str1[i].substring(0,j)) ))&& (i != smallestStringIndex ))
+             if (((smallestString.substring(0,j)).equals( (inputString[i].substring(0,j)) ))&& (i != smallestStringIndex )) // use equals when comparing since its a string == doesn't give the desired result.
              {
                  counterPrefix=j; //increase the counter if letter matches
 
@@ -252,7 +250,7 @@ public static String compressString(String str1)
      find the most common prefix
      */
 
-        String[] str2 = {"app", "application", "bp" ,"app","ap"};
+        String[] str2 = {"a", "application", "ap" ,"app","ap"};
         System.out.println("\nLongest common prefix of the given string: "+ longestCommonPrefix(str2));
 
         /*
